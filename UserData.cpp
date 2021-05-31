@@ -9,8 +9,13 @@ int CUserData::nUserDataCount = 0;
 
 CUserData::CUserData(const char* paramName, const char* paramPhone, CUserData* paramNext)
 {
-	strcpy(this->szName, paramName);
-	strcpy(this->szPhone, paramPhone);
+	if (paramName == NULL)
+		szName[0] = '\0';
+	else strcpy(this->szName, paramName);
+	
+	if (paramPhone == NULL)
+		szPhone[0] = '\0';
+	else strcpy(this->szPhone, paramPhone);
 	this->pNext = paramNext;
 	nUserDataCount++;
 }
